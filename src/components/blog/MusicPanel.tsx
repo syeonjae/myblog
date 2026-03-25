@@ -28,7 +28,7 @@ export default function MusicPanel({
   const [isOpen, setIsOpen] = useState(false);
   const [currentTrackId, setCurrentTrackId] = useState(TRACKS[0].id);
   const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.4);
+  const [volume, setVolume] = useState(0.1);
   const [mobileHelpOpen, setMobileHelpOpen] = useState(false);
   const mounted = typeof window !== "undefined";
 

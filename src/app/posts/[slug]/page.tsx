@@ -5,6 +5,8 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPostMeta, getPostSource, toSlug } from "@/lib/posts";
 import { SITE_NAME, absoluteUrl } from "@/lib/site";
+import RelativeTime from "@/components/common/RelativeTime";
+import { formatAmPmTime } from "@/lib/datetime";
 
 type Params = { slug: string };
 
@@ -71,7 +73,7 @@ export default async function PostDetailPage({
   return (
     <main className="mx-auto w-full max-w-3xl py-8">
       <p className="text-sm text-zinc-400">
-        {post.meta.date} · {post.meta.readingMinutes}분
+        <RelativeTime date={post.meta.date} /> · {formatAmPmTime(post.meta.date)}
       </p>
       <h1 className="mt-3 text-3xl font-bold sm:text-4xl">{post.meta.title}</h1>
       <p className="mt-3 text-zinc-300">{post.meta.description}</p>

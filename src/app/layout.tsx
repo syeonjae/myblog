@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import VinylBackground from "@/components/blog/VinylBackground";
 import FloatingRadialMenu from "@/components/ui/FloatingRadialMenu";
+import SiteHeader from "@/components/common/SiteHeader";
+import SiteFooter from "@/components/common/SiteFooter";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -53,7 +55,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col text-zinc-100">
         <VinylBackground />
         <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 pb-10 pt-8 sm:px-6 lg:px-8">
+          <SiteHeader />
           {children}
+          <SiteFooter />
         </div>
         <FloatingRadialMenu />
       </body>
