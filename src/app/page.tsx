@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllCategories, getAllPostMeta } from "@/lib/posts";
 import RelativeTime from "@/components/common/RelativeTime";
+import VisitStats from "@/components/common/VisitStats";
 import { formatAmPmTime } from "@/lib/datetime";
 
 export default function HomePage() {
@@ -9,6 +10,8 @@ export default function HomePage() {
 
   return (
     <main className="flex-1">
+      <VisitStats />
+
       <section className="mb-6 flex flex-wrap gap-2">
         {categories.map((category) => (
           <Link
