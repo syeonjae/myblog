@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import VinylBackground from "@/components/blog/VinylBackground";
 import FloatingRadialMenu from "@/components/ui/FloatingRadialMenu";
-import SiteHeader from "@/components/common/SiteHeader";
+import SiteSidebar from "@/components/common/SiteSidebar";
 import SiteFooter from "@/components/common/SiteFooter";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const notoSansKr = Noto_Sans_KR({
+  variable: "--font-noto-sans-kr",
   subsets: ["latin"],
+  weight: ["400", "500", "700", "800"],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -50,15 +55,20 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${notoSansKr.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col text-zinc-100">
-        <VinylBackground />
-        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 pb-10 pt-8 sm:px-6 lg:px-8">
-          <SiteHeader />
-          {children}
+      <body className="min-h-screen flex flex-col text-zinc-100">
+        <main className="w-full flex-1 px-4 pt-8 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-8">
+            <SiteSidebar />
+            <div className="min-w-0 pb-10">{children}</div>
+          </div>
+        </main>
+
+        <div className="w-full px-4 pb-6 sm:px-6 lg:px-8">
           <SiteFooter />
         </div>
+
         <FloatingRadialMenu />
       </body>
     </html>

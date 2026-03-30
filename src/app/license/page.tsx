@@ -5,7 +5,7 @@ export default function LicensePage() {
       <div className="mt-6 space-y-4 text-zinc-300 leading-8">
         <p>
           이 블로그의 글, 이미지, 코드 등 모든 콘텐츠의 저작권은 별도 표기가 없는 한
-          syeonjae&apos;s Lab에 있습니다.
+          연재로그에 있습니다.
         </p>
         <p>
           사전 허가 없는 무단 복제, 재배포, 상업적 사용을 금지합니다.

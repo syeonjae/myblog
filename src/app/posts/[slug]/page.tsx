@@ -72,16 +72,16 @@ export default async function PostDetailPage({
 
   return (
     <main className="mx-auto w-full max-w-3xl py-8">
-      <p className="text-sm text-zinc-400">
+      <p className="text-sm text-zinc-500">
         <RelativeTime date={post.meta.date} /> · {formatAmPmTime(post.meta.date)}
       </p>
-      <h1 className="mt-3 text-3xl font-bold sm:text-4xl">{post.meta.title}</h1>
-      <p className="mt-3 text-zinc-300">{post.meta.description}</p>
+      <h1 className="mt-3 text-3xl font-bold text-zinc-100 sm:text-4xl">{post.meta.title}</h1>
+      <p className="mt-3 text-zinc-400">{post.meta.description}</p>
 
       <div className="mt-4 flex flex-wrap gap-2">
         <Link
           href={`/category/${post.meta.categorySlug}`}
-          className="rounded-full border border-fuchsia-300/40 bg-fuchsia-300/10 px-3 py-1 text-xs text-fuchsia-100"
+          className="rounded-full border border-white/25 bg-transparent px-3 py-1 text-xs text-zinc-200"
         >
           {post.meta.category}
         </Link>
@@ -89,14 +89,14 @@ export default async function PostDetailPage({
           <Link
             key={tag}
             href={`/tag/${toSlug(tag)}`}
-            className="rounded-full border border-white/20 px-3 py-1 text-xs text-zinc-200"
+            className="rounded-full border border-white/20 px-3 py-1 text-xs text-zinc-300"
           >
             #{tag}
           </Link>
         ))}
       </div>
 
-      <article className="prose prose-invert mt-10 max-w-none prose-headings:text-zinc-100 prose-p:text-zinc-200 prose-a:text-fuchsia-300">
+      <article className="prose prose-invert mt-10 max-w-none prose-headings:text-zinc-100 prose-p:text-zinc-300 prose-a:text-zinc-100">
         {content}
       </article>
     </main>

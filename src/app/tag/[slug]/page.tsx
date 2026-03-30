@@ -20,15 +20,21 @@ export default async function TagPage({ params }: { params: Promise<Params> }) {
 
   return (
     <main className="mx-auto w-full max-w-4xl py-8">
-      <h1 className="text-3xl font-bold">태그: #{tag.name}</h1>
-      <p className="mt-2 text-zinc-400">총 {tag.count}개 글</p>
+      <h1 className="text-3xl font-bold text-zinc-100">태그: #{tag.name}</h1>
+      <p className="mt-2 text-zinc-500">총 {tag.count}개 글</p>
 
       <div className="mt-8 space-y-4">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/posts/${post.slug}`} className="block rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10">
-            <p className="text-xs text-zinc-400"><RelativeTime date={post.date} /> · {formatAmPmTime(post.date)}</p>
-            <h2 className="mt-1 text-lg font-semibold">{post.title}</h2>
-            <p className="mt-1 text-sm text-zinc-300">{post.description}</p>
+          <Link
+            key={post.slug}
+            href={`/posts/${post.slug}`}
+            className="block rounded-xl border border-white/15 bg-[#111111] p-4 hover:border-white/35"
+          >
+            <p className="text-xs text-zinc-500">
+              <RelativeTime date={post.date} /> · {formatAmPmTime(post.date)}
+            </p>
+            <h2 className="mt-1 text-lg font-semibold text-zinc-100">{post.title}</h2>
+            <p className="mt-1 text-sm text-zinc-400">{post.description}</p>
           </Link>
         ))}
       </div>
