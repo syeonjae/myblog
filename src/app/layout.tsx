@@ -4,6 +4,7 @@ import "./globals.css";
 import FloatingRadialMenu from "@/components/ui/FloatingRadialMenu";
 import SiteSidebar from "@/components/common/SiteSidebar";
 import SiteFooter from "@/components/common/SiteFooter";
+import StarfieldBackground from "@/components/background/StarfieldBackground";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const notoSansKr = Noto_Sans_KR({
@@ -58,14 +59,16 @@ export default function RootLayout({
       className={`${notoSansKr.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col text-zinc-100">
-        <main className="w-full flex-1 px-4 pt-8 sm:px-6 lg:px-8">
+        <StarfieldBackground />
+
+        <main className="relative z-10 w-full flex-1 px-4 pt-8 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-8">
             <SiteSidebar />
             <div className="min-w-0 pb-10">{children}</div>
           </div>
         </main>
 
-        <div className="w-full px-4 pb-6 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full px-4 pb-6 sm:px-6 lg:px-8">
           <SiteFooter />
         </div>
 

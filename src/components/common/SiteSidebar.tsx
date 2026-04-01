@@ -6,7 +6,7 @@ export default function SiteSidebar() {
   const categories = getAllCategories();
 
   return (
-    <aside className="mb-6 h-full rounded-xl border border-white/15 bg-[#111111] p-5 lg:sticky lg:top-4 lg:mb-0 lg:flex lg:h-[calc(100vh-2rem)] lg:flex-col lg:justify-between lg:overflow-y-auto">
+    <aside className="mb-6 h-full rounded-xl border border-white/15 bg-transparent p-5 lg:sticky lg:top-4 lg:mb-0 lg:flex lg:h-[calc(100vh-2rem)] lg:flex-col lg:justify-between lg:overflow-y-auto">
       <div>
         <Link href="/" className="block">
           <p className="text-xs uppercase  text-zinc-400 hover:text-zinc-200">

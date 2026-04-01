@@ -15,17 +15,21 @@ export default function VisitStats() {
     fetch("/api/visits", { cache: "no-store" })
       .then((res) => res.json())
       .then((data: Stats) => setStats(data))
-      .catch(() => setStats({ totalVisits: null, todayVisitors: null, configured: false }));
+      .catch(() =>
+        setStats({ totalVisits: null, todayVisitors: null, configured: false }),
+      );
   }, []);
 
   if (!stats) {
-    return <div className="mb-5 text-xs text-zinc-500">방문 통계 불러오는 중...</div>;
+    return (
+      <div className="mb-5 text-xs text-zinc-500">방문 통계 불러오는 중...</div>
+    );
   }
 
   if (!stats.configured) {
     return (
       <div className="mb-5 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-zinc-300">
-        방문 통계를 표시하려면 Vercel 환경변수에 Upstash Redis 키를 설정해줘.
+        방문자를 표시할 수 없습니다.
       </div>
     );
   }
