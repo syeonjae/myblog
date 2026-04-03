@@ -20,7 +20,6 @@ export default function StarfieldBackground() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const width = window.innerWidth;
     const quality = width >= 1440 ? "high" : width >= 900 ? "mid" : "low";
-
     const starCount = quality === "high" ? 1800 : quality === "mid" ? 1200 : 700;
     const meteorChance = reducedMotion ? 0.0004 : quality === "high" ? 0.006 : 0.0035;
 
@@ -68,6 +67,7 @@ export default function StarfieldBackground() {
 
     const meteors: Meteor[] = [];
     const baseDirection = new THREE.Vector3(-1, -0.55, 0).normalize();
+
     const spawnMeteor = () => {
       const start = new THREE.Vector3(
         (Math.random() - 0.1) * 1200,
@@ -95,20 +95,28 @@ export default function StarfieldBackground() {
       });
     };
 
+    const mouseTarget = { x: 0, y: 0 };
+    const cameraCurrent = { x: 0, y: 0 };
+
+    const onPointerMove = (event: PointerEvent) => {
+      const nx = event.clientX / window.innerWidth - 0.5;
+      const ny = event.clientY / window.innerHeight - 0.5;
+      mouseTarget.x = nx * 26;
+      mouseTarget.y = -ny * 16;
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+
     let rafId = 0;
     const animate = () => {
       rafId = requestAnimationFrame(animate);
 
-      const posAttr = starsGeometry.getAttribute("position") as THREE.BufferAttribute;
-      for (let i = 0; i < starCount; i += 1) {
-        const i3 = i * 3;
-        posAttr.array[i3 + 1] += 0.03;
-        if (posAttr.array[i3 + 1] > 760) posAttr.array[i3 + 1] = -760;
-      }
-      posAttr.needsUpdate = true;
+      cameraCurrent.x += (mouseTarget.x - cameraCurrent.x) * 0.04;
+      cameraCurrent.y += (mouseTarget.y - cameraCurrent.y) * 0.04;
 
-      stars.rotation.y += 0.0002;
-      stars.rotation.x += 0.00005;
+      camera.position.x = cameraCurrent.x;
+      camera.position.y = cameraCurrent.y;
+      camera.lookAt(0, 0, 0);
 
       if (Math.random() < meteorChance) spawnMeteor();
 
@@ -152,6 +160,7 @@ export default function StarfieldBackground() {
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("pointermove", onPointerMove);
 
       meteors.forEach((m) => {
         scene.remove(m.line);

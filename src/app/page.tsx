@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllPostMeta } from "@/lib/posts";
 import RelativeTime from "@/components/common/RelativeTime";
 import TypingWelcome from "@/components/common/TypingWelcome";
+import TypingParagraph from "@/components/common/TypingParagraph";
 import { formatAmPmTime } from "@/lib/datetime";
 
 export default function HomePage() {
@@ -15,10 +16,7 @@ export default function HomePage() {
         <div className="relative z-10 w-full text-center">
           <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Welcome to</p>
           <TypingWelcome />
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-zinc-300 sm:text-base">
-            일상, 개발, 포트폴리오, 취미를 차분하게 기록합니다. 빠르게 훑어볼 수 있는 짧은 글부터,
-            깊게 읽을 수 있는 긴 글까지 담아둘게요.
-          </p>
+          <TypingParagraph />
 
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             <a

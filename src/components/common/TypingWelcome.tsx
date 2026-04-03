@@ -24,7 +24,9 @@ export default function TypingWelcome() {
   return (
     <h2 className="mt-3 text-2xl font-bold text-zinc-100 sm:text-3xl">
       {text}
-      <span className="ml-0.5 inline-block text-zinc-400 animate-pulse">|</span>
+      <span className="ml-0.5 inline-block text-zinc-400 animate-pulse ">
+        |
+      </span>
     </h2>
   );
 }
