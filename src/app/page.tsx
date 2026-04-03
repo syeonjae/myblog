@@ -10,11 +10,12 @@ export default function HomePage() {
 
   return (
     <main className="flex-1">
-      <section className="relative mb-8 flex min-h-[calc(100vh-8rem)] items-center overflow-hidden rounded-xl border border-white/20 bg-transparent p-6 sm:p-8 lg:min-h-[calc(100vh-6rem)]">
+      <section className="relative mb-8 flex min-h-[calc(100vh-8rem)] items-center overflow-hidden rounded-xl border border-white/20 bg-transparent p-6 sm:p-8 lg:min-h-[calc(100vh-2rem)]">
         <div className="absolute inset-0 bg-transparent" />
-
         <div className="relative z-10 w-full text-center">
-          <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Welcome to</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">
+            Welcome to
+          </p>
           <TypingWelcome />
           <TypingParagraph />
 
@@ -35,7 +36,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="latest-posts" className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <section
+        id="latest-posts"
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3"
+      >
         {posts.map((post) => (
           <Link
             key={post.slug}
@@ -52,7 +56,9 @@ export default function HomePage() {
             <h2 className="line-clamp-2 text-lg font-semibold text-zinc-100 group-hover:text-white">
               {post.title}
             </h2>
-            <p className="mt-2 line-clamp-3 text-sm text-zinc-400">{post.description}</p>
+            <p className="mt-2 line-clamp-3 text-sm text-zinc-400">
+              {post.description}
+            </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {post.tags.slice(0, 3).map((tag) => (
                 <span
