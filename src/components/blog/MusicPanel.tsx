@@ -195,10 +195,6 @@ export default function MusicPanel({
                 정지
               </button>
             </div>
-
-            <div className="mt-4 rounded-xl border border-teal-300/20 bg-teal-300/5 p-3 text-xs text-teal-100/90">
-              다음 단계에서 이 영역을 3D 턴테이블 UI로 교체하면 돼.
-            </div>
           </motion.div>
         </>
       )}
